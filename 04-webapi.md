@@ -1,50 +1,57 @@
 # Web APIを使って豪華なウェブサイトに
 
-## PokeAPIを使って今日のラッキーポケモンを表示
+## PokéAPIを使って今日のラッキーポケモンを表示
 
-以下のコードを使用して、PokeAPIからデータを取得し、ランダムなポケモンを表示してみましょう。
+以下のコードを使用して、PokéAPI <https://pokeapi.co/> からデータを取得し、ランダムなポケモンを表示してみましょう。
 
 ```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <title>Lucky Pokémon</title>
+  <title>今日のポケモン</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" >
   <style>
-    h1 {
-      color: grey;
+    #pokemon {
+      width: 300px;
     }
 
-    .pokemon {
-      text-align: center;
-    }
-
-    .pokemon img {
-      width: 200px;
+    #pokemonImage {
+      width: 100%;
     }
   </style>
 </head>
 <body>
 
-<h1>今日のラッキーポケモン</h1>
-<div class="pokemon">
-  <h2 id="pokemonName"></h2>
-  <img id="pokemonImage" src="" alt="ポケモンの画像">
-</div>
+<main class="container">
+  <h1>今日のポケモン</h1>
+  
+  <div id="pokemon">
+    <h2 id="pokemonName"></h2>
+    <img id="pokemonImage" src="">
+  </div>
+</main>
 
 <script>
-  const pokemonName = document.getElementById('pokemonName');
-  const pokemonImage = document.getElementById('pokemonImage');
+  // HTML要素を取得
+  let pokemonName = document.getElementById('pokemonName');
+  let pokemonImage = document.getElementById('pokemonImage');
 
-  const randomId = Math.floor(Math.random() * 898) + 1; // ポケモンは現在898種
-
-  fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`)
-    .then(response => response.json())
-    .then(data => {
+  // ポケモンは現在898種
+  let pokemonNumber = Math.floor(Math.random() * 898) + 1;
+ 
+  // PokéAPIからデータを取得し、名前と画像を表示
+  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`)
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
       pokemonName.textContent = data.name;
       pokemonImage.src = data.sprites.front_default;
     })
-    .catch(error => {
-      console.error('エラーが発生しました:', error);
+    .catch(function(error) {
+      console.error(`エラーが発生しました:${error}`);
     });
 </script>
 
@@ -52,32 +59,18 @@
 </html>
 ```
 
-### コードの説明
+ここではこれまでに出てきていない、いくつかの新しい要素があります。
 
-- `<div class="pokemon">`：ポケモンの情報を表示するコンテナです。
-- `fetch()`：指定したURLからデータを取得します。
-- `.then()`：非同期処理の結果を受け取って次の処理を行います。
-- `data.name`：取得したポケモンの名前を取得します。
-- `data.sprites.front_default`：ポケモンの画像URLを取得します。
-- `Math.floor(Math.random() * 898) + 1`：1から898までのランダムな整数を生成します。
+- `` `https://pokeapi.co/api/v2/pokemon/${pokemonNumber}` ``: テンプレートリテラルを使って、URLの一部を変数に置き換えています。`${}`内に変数を記述することで、文字列の中に変数を埋め込むことができます。
+- `fetch()`: 関数を使って指定したURLからデータを取得しています。fetch関数の結果は`.then()`メソッドで受け取り、次の処理を行います。
+
+このページもGitHubリポジトリにプッシュし、GitHub Pagesで公開してみましょう。
 
 ## 発展課題
 
-さらにウェブAPIを活用して、以下のような機能を追加してみましょう。
+ここではPokéAPIを使って、ランダムなポケモンを表示するウェブサイトを作成しました。
+時間に余裕のある方は、以下のような課題に取り組んでみましょう。
 
-- **OpenWeatherMap API**：現在の天気情報を取得して表示してみましょう。
-  - [OpenWeatherMap API](https://openweathermap.org/api)
-- **The Cat API**：ランダムな猫の画像を表示してみましょう。
-  - [The Cat API](https://thecatapi.com/)
-- **NASA API**：NASAが提供する天体写真を表示してみましょう。
-  - [NASA API](https://api.nasa.gov/)
-
----
-
-# 最後に
-
-ワークショップはいかがでしたか？今回の内容を通して、ウェブ開発の基本からJavaScriptによる動的なコンテンツの追加、さらにウェブAPIを使った高度な機能の実装まで体験していただきました。
-
-プログラミングやウェブ開発は、学べば学ぶほど新しい発見や楽しいことがたくさんあります。ぜひ引き続き学習を続けて、自分だけの素敵なウェブサイトを作ってみてください。
-
-これからの皆さんの活躍を楽しみにしています！
+- **ポケモン名を日本語に**: ポケモンの名前を日本語に変換して表示してみましょう。ポケモンの日本語名は Pokemon Species Endpoint <https://pokeapi.co/docs/v2#pokemon-species> から取得できます。
+- **OpenWeatherMap API**: OpenWeatherMap API <https://openweathermap.org/api> を利用して現在の天気情報を取得して表示してみましょう。
+- **NASA API**: NASA API <https://api.nasa.gov/> を利用してNASAが提供する天体写真を表示してみましょう。
