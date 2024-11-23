@@ -32,8 +32,10 @@
 </main>
 
 <script>
-  // HTML要素を取得
+  // ポケモンの名前を表示する要素を取得
   let pokemonName = document.getElementById('pokemonName');
+
+  // ポケモンの画像を表示する要素を取得
   let pokemonImage = document.getElementById('pokemonImage');
 
   // ポケモンは現在898種
@@ -42,15 +44,24 @@
   // PokéAPIからデータを取得し、名前と画像を表示
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`)
     .then(function (response) {
+      // レスポンスをコンソールに出力
       console.log(response);
+
+      // JSONデータを取得して次の .then() に渡す
       return response.json();
     })
     .then(function(data) {
+      // JSONデータをコンソールに出力
       console.log(data);
+
+      // ポケモンの名前を表示
       pokemonName.textContent = data.name;
+
+      // ポケモンの画像を表示
       pokemonImage.src = data.sprites.front_default;
     })
     .catch(function(error) {
+      // エラーが発生した場合はコンソールに出力
       console.error(`エラーが発生しました:${error}`);
     });
 </script>

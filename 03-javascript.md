@@ -4,7 +4,7 @@
 
 ## 数当てゲームをサイトに組み込んでみる
 
-以下のコードを`guessgame.html` として作成し、数当てゲームを実装してみましょう。
+以下のコードを`guessgame.html` として作成し、数当てゲームを動かしてみましょう。
 
 ```html
 <!DOCTYPE html>
@@ -37,22 +37,28 @@
 
 <script>
   // 1から20までのランダムな整数を生成し、コンソールにログを出力
-  let randomNumber = Math.floor(Math.random() * 20) + 1;
-  console.log('正解は' + randomNumber);
+  let answerNumber = Math.floor(Math.random() * 20) + 1;
+  console.log('正解は' + answerNumber);
 
-  // HTML要素を取得
+  // 数値入力フィールドを取得
   let guessField = document.querySelector('#guessField');
+
+  // submitボタンを取得
   let guessSubmit = document.querySelector('#guessSubmit');
+
+  // 結果を表示する要素を取得
   let guessResult = document.querySelector('#guessResult');
 
   // ユーザーの入力をチェックし、結果を表示
   function checkGuess() {
+    // ユーザの入力した値を取得
     let userGuess = Number(guessField.value);
-    if (userGuess === randomNumber) {
+
+    if (userGuess === answerNumber) { // ユーザの入力が正解
       guessResult.textContent = '正解です！';
-    } else if (userGuess < randomNumber) {
+    } else if (userGuess < answerNumber) { // ユーザの入力が正解より小さい
       guessResult.textContent = 'もっと大きいです';
-    } else if (userGuess > randomNumber) {
+    } else if (userGuess > answerNumber) { // ユーザの入力が正解より大きい
       guessResult.textContent = 'もっと小さいです';
     }
   }

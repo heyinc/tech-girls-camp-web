@@ -7,15 +7,15 @@
 世の中には様々なエディターがありますが、Visual Studio Codeは無料で使える非常に人気のあるエディターです。
 
 ### VS Codeでテキストファイルを作成してみる
-- VS Codeで camp-web という名前のディレクトリを作成し、開いてみましょう
+- VS Codeで camp-website という名前のディレクトリを作成し、開いてみましょう  
   ![](images/01-setup-open-directory.png)
-- 作成したディレクトリに hello.txt というファイルを作成して、`Hello, World!` と書いて保存してみましょう
+- 作成したディレクトリに hello.txt というファイルを作成して、`Hello, World!` と書いて保存してみましょう  
   ![](images/01-setup-hello.png)
 
 ### Tips
 - VS Codeの表示を日本語にするには以下の手順を参考にしてください
   - <https://code.visualstudio.com/docs/getstarted/locales>
-- より発展的な使い方については以下のドキュメントを参考にしてください
+- VS Codeのより発展的な使い方については以下のドキュメントを参考にしてください
   - <https://code.visualstudio.com/docs>
 
 ## GitHubを使ってみる
@@ -31,16 +31,18 @@ GitHub <https://github.com/> にアカウントを作ってみましょう。
 
 例: <https://github.com/hogelog>
 
-まずは「New repository」リンクからリポジトリを作成してみましょう。
+まずは「New repository」リンクから camp-website のような名前のリポジトリを作成してみましょう。
 
 ![](images/01-setup-github-new-repo-link.png)
+
+![](images/01-setup-github-new-repo.png)
 
 作成したリポジトリは最初は空っぽです。
 作成したプログラムはこのリポジトリに保存していきます。
 
 ### GitHubリポジトリにファイルをプッシュしてみる
 
-先ほど作成したディレクトリ camp-web 内にある hello.txt をGitHubに作成した camp-web リポジトリにプッシュしてみましょう。
+先ほど作成したディレクトリ camp-website 内にある hello.txt をGitHubに作成した camp-website リポジトリにプッシュしてみましょう。
 
 #### SSH鍵の設定
 まずは手元からGitHubリポジトリコードをプッシュするための認証情報を設定します。
@@ -54,6 +56,8 @@ GitHub <https://github.com/> にアカウントを作ってみましょう。
 ```
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
+
+（`your_email@example.com` の部分はあなたのメールアドレスに置き換えてください）
 
 ![](images/01-setup-terminal.png)
 
@@ -109,5 +113,7 @@ URLの次にリモートリポジトリの名前を設定しますが、ここ�
 ![](images/01-setup-commit-message.png)
 
 ### Tips
-- より発展的な使い方については以下のドキュメントを参考にしてください
+- ここで説明したGitHubへのSSH鍵の登録については以下ドキュメントで詳細な手順が説明されています
+  - <https://docs.github.com/ja/github/authenticating-to-github/connecting-to-github-with-ssh>
+- GitHubのより発展的な使い方については以下のドキュメントを参考にしてください
   - <https://docs.github.com/ja/get-started>

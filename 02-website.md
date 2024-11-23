@@ -25,7 +25,7 @@
 
 このHTMLをブラウザで開いてみると、`これはウェブサイトです。`と表示されるはずです。
 
-また、VS Codeで index.html の文言を変更してブラウザでリロードすることで、変更が反映されることを確認してみましょう。
+また、VS Codeで index.html の文言を変更してブラウザでリロードし、変更が反映されることを確認してみましょう。
 
 ### 見出しやリンク、画像の追加
 
@@ -67,7 +67,7 @@ https://www.irasutoya.com/2018/12/blog-post_939.html
 
 このHTMLをブラウザで開いてみると、リストやリンク、画像などが表示されています。
 
-ここではごく基本的なHTML要素について解説しましたが、HTMLには膨大な機能が存在します。発展的な内容については MDN のドキュメントなどを参照ください。
+ここではごく基本的なHTML要素のみ利用しましたが、HTMLにはたくさんの機能が存在します。発展的な内容については MDN のドキュメントなどを参照ください。
 
 - MDN HTMLの基本 <https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/HTML_basics>
 - MDN HTMLの学習 <https://developer.mozilla.org/ja/docs/Learn/HTML>
