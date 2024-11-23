@@ -1,5 +1,7 @@
 # セットアップ
 
+この章では、プログラミングをするための環境をセットアップしていきます。
+
 ## Visual Studio Codeを使ってみる
 プログラミングをするためのエディターとして、Visual Studio Code (VS Code) を使ってみましょう。
 <https://code.visualstudio.com/>
