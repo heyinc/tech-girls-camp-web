@@ -1,0 +1,173 @@
+# 発展的な取り組み
+
+より発展的な内容に取り組んでみたい場合の取り組みをいくつか紹介してみます。
+時間的に余裕がある場合、興味があるものに取り組んでみてください。
+
+## p5.js
+
+p5.js はJavaScriptでクリエイティブなアートを作成するためのライブラリです。
+簡単なコードでダイナミックなアニメーションやグラフィックスを描画することができます。
+
+以下は p5.js を使って五芒星を描画するシンプルな例です。
+
+```javascript
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>p5.js</title>
+  <style>
+    body {
+      margin: 0; /* 余白を完全に削除 */
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+</head>
+<body>
+
+<script>
+function setup() {
+  createCanvas(windowWidth, windowHeight); // ウィンドウ全体をキャンバスに
+  background(0);
+  fill(255, 255, 0); // 星の色を黄色に設定
+  noStroke();
+  drawStar(width / 2, height / 2, 100); // 中央に五芒星を描画
+}
+
+function drawStar(x, y, size) {
+  let angle = PI / 2; // 開始角度
+  let step = TWO_PI / 5; // 1/5円の角度
+
+  beginShape();
+  // 外側と内側の頂点を個別に計算
+  vertex(x + cos(angle) * size, y - sin(angle) * size);
+  vertex(x + cos(angle + step / 2) * (size / 2), y - sin(angle + step / 2) * (size / 2));
+  vertex(x + cos(angle + step) * size, y - sin(angle + step) * size);
+  vertex(x + cos(angle + step * 1.5) * (size / 2), y - sin(angle + step * 1.5) * (size / 2));
+  vertex(x + cos(angle + step * 2) * size, y - sin(angle + step * 2) * size);
+  vertex(x + cos(angle + step * 2.5) * (size / 2), y - sin(angle + step * 2.5) * (size / 2));
+  vertex(x + cos(angle + step * 3) * size, y - sin(angle + step * 3) * size);
+  vertex(x + cos(angle + step * 3.5) * (size / 2), y - sin(angle + step * 3.5) * (size / 2));
+  vertex(x + cos(angle + step * 4) * size, y - sin(angle + step * 4) * size);
+  vertex(x + cos(angle + step * 4.5) * (size / 2), y - sin(angle + step * 4.5) * (size / 2));
+  endShape(CLOSE);
+}
+</script>
+
+</body>
+</html>
+```
+
+また、ループや分岐などより複雑なコードとなりますが、以下のような簡潔なコードで花火を描画することもできます。
+
+```javascript
+let particles = [];
+
+function setup() {
+  createCanvas(windowWidth, windowHeight); // ウィンドウ全体をキャンバスに
+  background(0);
+}
+
+function draw() {
+  background(0, 50); // 残像効果
+
+  // 粒子を更新・描画
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+    fill(...p.color, p.alpha);
+    noStroke();
+    ellipse(p.x, p.y, 6);
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vx *= 0.98; // 摩擦
+    p.vy = p.vy * 0.98 + 0.1; // 重力
+    p.alpha -= 5; // 透明度減少
+    if (p.alpha <= 0) particles.splice(i, 1);
+  }
+
+  // 定期的に花火を生成
+  if (frameCount % 60 === 0) {
+    let x = random(width), y = random(height / 2);
+    for (let i = 0; i < 100; i++) {
+      let angle = random(TWO_PI);
+      let velocity = random(2, 6);
+      particles.push({
+        x: x,
+        y: y,
+        vx: cos(angle) * velocity,
+        vy: sin(angle) * velocity,
+        alpha: 255,
+        color: [random(255), random(255), random(255)],
+      });
+    }
+  }
+}
+```
+
+<https://p5js.org/> には様々なサンプルコードやリファレンスが掲載されているので、興味がある方はぜひ試してみてください。
+
+## Local Storage
+
+これまでのコードは、ページをリロードするとデータが消えてしまうものでした。Local Storage を使うことで、ページをリロードしてもデータを保持することができます。
+
+以下の例はLocal Storageを使って訪問回数をカウントするコードです。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>訪問カウンター</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<body>
+
+<main class="container">
+  <h1>ようこそ！</h1>
+  <p id="visitMessage"></p>
+</main>
+
+<script>
+  // localStorageから訪問回数を取得し、数値に変換（初回訪問時は0）
+  let visits = parseInt(localStorage.getItem('visits')) || 0;
+
+  // 訪問回数を1増やして保存
+  visits += 1;
+  localStorage.setItem('visits', visits);
+
+  // メッセージを表示
+  const visitMessage = document.getElementById('visitMessage');
+  if (visits === 1) {
+    visitMessage.textContent = '初めての訪問ありがとうございます！';
+  } else {
+    visitMessage.textContent = `これはあなたの${visits}回目の訪問です！`;
+  }
+</script>
+</body>
+</html>
+```
+
+Local Storage 単体でできることは限られていますが、ブラウザの他の様々な機能と組み合わせて、より高度なウェブアプリケーションを作成することができます。
+
+## クラウドサービスとの連携
+Local Storage はブラウザ内にデータを保存するための機能ですが、クラウドサービスを使うことでデータをサーバーに保存することもできます。
+
+例えば以下のようなクラウドサービスを使うことでウェブアプリケーションで更に複雑な機能を実装することができます。
+
+- Firebase <https://firebase.google.com/>
+  - Googleが提供する、認証、データベース、プッシュ通知などの機能を持つクラウドサービスです
+- Supabase <https://supabase.io/>
+  - データベースや認証、簡易APIなどの機能を提供する人気のクラウドサービスです
+
+## 自作バックエンドアプリケーションとの連携
+フロントエンドだけでなく、これまでに使ったWeb APIのようなものを自分で作成することもできます。
+
+自作バックエンドアプリケーションの作成や運用の手間はかかりますが、自由度が高く、複雑なウェブアプリケーションを構築できます。
+
+## 様々なウェブ知識を学ぶ
+これまでの内容ではウェブ開発の基礎的な部分に触れてきましたが、ウェブ開発にはさまざまな技術が存在します。
+
+以下のリソースを参考に、より深くウェブ開発について学ぶことができます。
+
+- MDN Web Docs <https://developer.mozilla.org/ja/docs/Learn>
+  - ウェブ開発の基礎から応用まで幅広く学ぶことができるリソースです
+- Zenn <https://zenn.dev/>
+  - ウェブ開発に限らず、プログラミング全般について多くの人が発信しているプラットフォームです
