@@ -77,7 +77,13 @@
 
 このページもGitHubリポジトリにプッシュし、GitHub Pagesで公開してみましょう。
 
-## 発展課題
+### Tips
+- `fetch()` 関数を使った通信の様子は開発者ツールのネットワークタブで確認できます。  
+  ![](images/04-webapi-inspect.png)
+- PokéAPIを使うためのAPI通信に使った `fetch()` 関数についての詳細は以下MDNのドキュメントを参照してください。
+  - <https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch>
+
+### 発展課題
 
 ここではPokéAPIを使って、ランダムなポケモンを表示するウェブサイトを作成しました。
 時間に余裕のある方は、以下のような課題に取り組んでみましょう。
