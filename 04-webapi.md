@@ -91,5 +91,5 @@
 時間に余裕のある方は、以下のような課題に取り組んでみましょう。
 
 - **ポケモン名を日本語に**: ポケモンの名前を日本語に変換して表示してみましょう。ポケモンの日本語名は Pokemon Species Endpoint <https://pokeapi.co/docs/v2#pokemon-species> から取得できます。
-- **OpenWeatherMap API**: OpenWeatherMap API <https://openweathermap.org/api> を利用して現在の天気情報を取得して表示してみましょう。
 - **NASA API**: NASA API <https://api.nasa.gov/> を利用してNASAが提供する天体写真を表示してみましょう。
+- **他の様々なAPI**: エンタメやジョーク系から実用系まで、様々なAPIが無料で提供されています。興味のあるAPIを探して、ウェブサイトに組み込んでみましょう。
