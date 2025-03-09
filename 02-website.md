@@ -10,6 +10,7 @@
 <html lang="ja">
 <head>
   <title>Example Website</title>
+  <meta charset="UTF-8">
 </head>
 <body>
 これはウェブサイトです。
@@ -36,6 +37,7 @@
 <html lang="ja">
 <head>
   <title>Example Website</title>
+  <meta charset="UTF-8">
 </head>
 <body>
 
@@ -84,6 +86,7 @@ CSS (Cascading Style Sheets) を使うことで、ウェブページの見た目
 <html lang="ja">
 <head>
   <title>Example Website</title>
+  <meta charset="UTF-8">
   <style>
     h1 {
       color: grey;
@@ -125,6 +128,7 @@ CSSは上述の通り、HTML内に記述することもできますが、別フ�
 <html lang="ja">
 <head>
   <title>Example Website</title>
+  <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" >
   <style>
   </style>
