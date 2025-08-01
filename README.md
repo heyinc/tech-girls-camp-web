@@ -1,4 +1,4 @@
-# STORES Tech Girls Camp - Day 2 Webアプリ開発
+# STORES Tech Girls Camp - Day 1 Webアプリ開発
 
 1. [セットアップ](01-setup.md) 
 2. [HTML/CSSを書いてウェブサイトを作ってみる](02-website.md)
