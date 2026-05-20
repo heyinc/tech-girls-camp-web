@@ -79,7 +79,7 @@ Claude Code はAIと対話しながらコードを書いたり読んだりでき
 ### Claude Code をインストールする
 VS Codeの画面下部にあるターミナル (表示されていない場合はメニューから「ターミナル」→「新しいターミナル」) を開き、利用しているOSにあわせて以下のコマンドを実行します。
 
-Macの場合:
+macOSの場合:
 
 ```sh
 curl -fsSL https://claude.ai/install.sh | bash
@@ -96,7 +96,7 @@ irm https://claude.ai/install.ps1 | iex
 ### Amazon Bedrockへの接続情報を設定する
 Claude Codeは裏側でAmazon Bedrockというサービスを通してAIと通信します。キャンプ当日に接続用のトークンをお渡しするので、以下のコマンドの `<TOKEN>` 部分を配布されたトークンに置き換えて実行してください。
 
-Macの場合:
+macOSの場合:
 
 ```sh
 export CLAUDE_CODE_USE_BEDROCK=1
