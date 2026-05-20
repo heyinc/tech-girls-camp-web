@@ -72,6 +72,65 @@ GitHubのリポジトリページにアクセスすると、手元で作成し�
 
 ![](images/01-setup-github-hellotxt.png)
 
+## Claude Code をセットアップする
+Claude Code はAIと対話しながらコードを書いたり読んだりできるツールです。
+このキャンプでは、後半の章でClaude Codeを使ってウェブサイトに機能を追加したり、わからない箇所を質問したりします。
+
+### Claude Code をインストールする
+VS Codeの画面下部にあるターミナル (表示されていない場合はメニューから「ターミナル」→「新しいターミナル」) を開き、利用しているOSにあわせて以下のコマンドを実行します。
+
+macOSの場合:
+
+```sh
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+Windowsの場合 (PowerShell):
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+インストールが完了したらターミナルを一度閉じて開き直してください。
+
+### Amazon Bedrockへの接続情報を設定する
+Claude Codeは裏側でAmazon Bedrockというサービスを通してAIと通信します。キャンプ当日に接続用のトークンをお渡しするので、以下のコマンドの `<TOKEN>` 部分を配布されたトークンに置き換えて実行してください。
+
+macOSの場合:
+
+```sh
+export CLAUDE_CODE_USE_BEDROCK=1
+export AWS_REGION=us-east-1
+export AWS_BEARER_TOKEN_BEDROCK='<TOKEN>'
+export ANTHROPIC_DEFAULT_SONNET_MODEL='us.anthropic.claude-sonnet-4-6'
+```
+
+Windowsの場合 (PowerShell):
+
+```powershell
+$env:CLAUDE_CODE_USE_BEDROCK = "1"
+$env:AWS_REGION = "us-east-1"
+$env:AWS_BEARER_TOKEN_BEDROCK = "<TOKEN>"
+$env:ANTHROPIC_DEFAULT_SONNET_MODEL = "us.anthropic.claude-sonnet-4-6"
+```
+
+この設定はターミナルを閉じると消えます。ターミナルを開き直したときは、もう一度同じコマンドを実行してください。
+
+### Claude Code を起動してみる
+ターミナルで以下のコマンドを実行します。
+
+```sh
+claude
+```
+
+起動したら「自己紹介して」と送ってみましょう。AIから返事が返ってくれば、セットアップは完了です。
+
+終了するときは `/exit` と入力するか、`Ctrl+C` を2回押します。
+
+### トークンの取り扱いについて
+- 配布されたトークンは他の人と共有しないでください。
+- トークンはキャンプ終了後に無効化されます。手元のメモは破棄して構いません。
+
 ここまでで今日のプログラミングに使う道具の説明は終了です。
 次の章からは実際に手を動かしてウェブサイトを作成してきましょう。
 
@@ -84,3 +143,5 @@ GitHubのリポジトリページにアクセスすると、手元で作成し�
   - <https://docs.github.com/ja/get-started>
 - GitHub Desktopの詳しい使い方については以下のドキュメントを参考にしてください
   - <https://docs.github.com/ja/desktop>
+- Claude Codeのより発展的な使い方については以下のドキュメントを参考にしてください
+  - <https://code.claude.com/docs/en/quickstart>
