@@ -1,7 +1,7 @@
-# HTML/CSSを書いてウェブサイトを作ってみる
+# HTML/CSSでウェブサイトを作ってみる
 この章ではHTMLとCSSを使って簡単なウェブサイトを作成し、ブラウザで表示してみます。
 
-## HTMLを書いてみる
+## HTMLを試してみる
 
 まず、以下のコードをVS Codeに入力またはコピー&ペーストしてみましょう。ファイル名は`index.html`とします。
 
@@ -74,7 +74,7 @@ https://www.irasutoya.com/2018/12/blog-post_939.html
 - MDN HTMLの基本 <https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/HTML_basics>
 - MDN HTMLの学習 <https://developer.mozilla.org/ja/docs/Learn/HTML>
 
-## CSSを書いてみる
+## CSSを試してみる
 
 ### 基本的なCSS
 CSS (Cascading Style Sheets) を使うことで、ウェブページの見た目を更にカスタマイズできます。
