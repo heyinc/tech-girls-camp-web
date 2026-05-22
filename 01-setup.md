@@ -93,43 +93,36 @@ irm https://claude.ai/install.ps1 | iex
 
 インストールが完了したらターミナルを一度閉じて開き直してください。
 
-### Amazon Bedrockへの接続情報を設定する
-Claude Codeは裏側でAmazon Bedrockというサービスを通してAIと通信します。キャンプ当日に接続用のトークンをお渡しするので、以下のコマンドの `<TOKEN>` 部分を配布されたトークンに置き換えて実行してください。
+### Bedrock接続用スクリプトを受け取る
+Claude Codeは裏側でAmazon BedrockというAWSのサービスを通してAIと通信します。キャンプ当日に、接続情報をあらかじめ埋め込んだ起動スクリプトをお渡しします。
+
+- macOSを使う方: `workshop-claude.sh`
+- Windowsを使う方: `workshop-claude.ps1`
+
+このスクリプトには専用の接続トークンが埋め込まれています。誤ってGitHubに公開してしまわないよう、**クローンしたリポジトリの中ではなく、デスクトップ (Desktop) に保存してください**。
+
+### Claude Code を起動してみる
+VS Codeのターミナルで、クローンしたリポジトリのフォルダにいることを確認してから、利用しているOSに合わせて以下のコマンドを実行します (ターミナルのカレントフォルダはリポジトリのままで構いません)。
 
 macOSの場合:
 
 ```sh
-export CLAUDE_CODE_USE_BEDROCK=1
-export AWS_REGION=us-east-1
-export AWS_BEARER_TOKEN_BEDROCK='<TOKEN>'
-export ANTHROPIC_DEFAULT_SONNET_MODEL='us.anthropic.claude-sonnet-4-6'
+bash ~/Desktop/workshop-claude.sh
 ```
 
 Windowsの場合 (PowerShell):
 
 ```powershell
-$env:CLAUDE_CODE_USE_BEDROCK = "1"
-$env:AWS_REGION = "us-east-1"
-$env:AWS_BEARER_TOKEN_BEDROCK = "<TOKEN>"
-$env:ANTHROPIC_DEFAULT_SONNET_MODEL = "us.anthropic.claude-sonnet-4-6"
-```
-
-この設定はターミナルを閉じると消えます。ターミナルを開き直したときは、もう一度同じコマンドを実行してください。
-
-### Claude Code を起動してみる
-ターミナルで以下のコマンドを実行します。
-
-```sh
-claude
+& "$HOME\Desktop\workshop-claude.ps1"
 ```
 
 起動したら「自己紹介して」と送ってみましょう。AIから返事が返ってくれば、セットアップは完了です。
 
-終了するときは `/exit` と入力するか、`Ctrl+C` を2回押します。
+終了するときは `/exit` と入力するか、`Ctrl+C` を2回押します。次にClaude Codeを使いたいときも、毎回このスクリプトから起動してください。
 
-### トークンの取り扱いについて
-- 配布されたトークンは他の人と共有しないでください。
-- トークンはキャンプ終了後に無効化されます。手元のメモは破棄して構いません。
+### スクリプトとトークンの取り扱いについて
+- スクリプトに埋め込まれたトークンは、他の人と共有したり、GitHubなどインターネット上にアップロードしたりしないでください。
+- トークンはキャンプ終了後に無効化されます。キャンプが終わったらデスクトップのスクリプトは削除して構いません。
 
 ここまでで今日のプログラミングに使う道具の説明は終了です。
 次の章からは実際に手を動かしてウェブサイトを作成してきましょう。
